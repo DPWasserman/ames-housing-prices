@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from pathlib import Path
 
-dataPath = Path('data')
+dataPath = Path('..') / 'data'
 if not os.path.exists(dataPath):
     os.mkdir(dataPath)
 
