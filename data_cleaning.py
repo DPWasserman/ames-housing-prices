@@ -7,6 +7,9 @@ dataPath = Path('data')
 if not os.path.exists(dataPath):
     os.mkdir(dataPath)
 
+if not os.file_exists(dataPath / 'Ames_Housing_Price_Data.csv'):
+    raise FileError('File does not exist! Please place in the data directory.')
+
 prices = pd.read_csv(dataPath / 'Ames_Housing_Price_Data.csv')
 #real_estate = pd.read_csv(dataPath / 'Ames_Real_Estate_Data.csv', low_memory=False)
 
