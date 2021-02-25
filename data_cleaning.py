@@ -1,8 +1,11 @@
-import pandas as pd
 import numpy as np
+import os
+import pandas as pd
 from pathlib import Path
 
 dataPath = Path('data')
+if not os.path.exists(dataPath):
+    os.mkdir(dataPath)
 
 prices = pd.read_csv(dataPath / 'Ames_Housing_Price_Data.csv')
 #real_estate = pd.read_csv(dataPath / 'Ames_Real_Estate_Data.csv', low_memory=False)
