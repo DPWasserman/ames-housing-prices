@@ -15,10 +15,13 @@ def clean(housing_location, save_to_disk=True, output_location=config.HOUSING_PI
     # Drop duplicate record(s)
     housing = housing.loc[~housing.duplicated(),:]
 
-    # Impute NAs with zeros
+    # Impute NAs with zeros (Continuous Variable)
     housing['TotalBsmtSF'].fillna(0, inplace=True)
     housing['BsmtUnfSF'].fillna(0, inplace=True)
-    housing['GarageArea'].fillna(0,inplace=True)
+    housing['GarageArea'].fillna(0, inplace=True)
+
+    # Impute NAs with None (Qualitative Variable)
+    housing['BsmtQual'].fillna('None', inplace=True)
 
     # TODO: Additional cleaning
 
@@ -43,7 +46,7 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     
     housing['Toilets'] = housing['HalfBath'] + housing['FullBath']
     housing['Showers'] = housing['FullBath']
-    housing['DecadeBuilt'] = housing['YearBuilt'].apply(lambda x: (x//10 *10))
+    housing['DecadeBuilt'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
 
     if save_to_disk:
         # Save to a Pickle file for ease of transport
