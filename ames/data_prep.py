@@ -41,6 +41,10 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
 
     housing['HasPool'] = (housing['PoolArea']>0)
     
+    housing['toilets'] = housing['HalfBath'] + housing['FullBath']
+    housing['showers'] = housing['FullBath']
+    housing['DecadeBuilt'] = housing['YearBuilt'].apply(lambda x: int(str(x)[:3]+'0'))
+    
 
     if save_to_disk:
         # Save to a Pickle file for ease of transport
