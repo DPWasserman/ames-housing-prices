@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
 
-from ames import config
+import sys
+sys.path.append('../ames')
+import config
 
 def clean(housing_location, save_to_disk=True, output_location=config.HOUSING_PICKLE):
 
