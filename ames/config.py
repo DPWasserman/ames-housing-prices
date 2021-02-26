@@ -8,5 +8,5 @@ if not os.path.exists(DATAPATH):
 HOUSING_CSV = DATAPATH / 'Ames_Housing_Price_Data.csv'
 HOUSING_PICKLE = DATAPATH / 'housing_data.pickle'
 
-if not os.file_exists(HOUSING_CSV):
-    raise FileError(f'{HOUSING_CSV} does not exist! Please place in the data directory.')
+if not os.path.exists(HOUSING_CSV):
+    raise OSError(f'{HOUSING_CSV} does not exist! Please place in the data directory.')
