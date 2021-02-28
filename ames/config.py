@@ -10,3 +10,20 @@ HOUSING_PICKLE = DATAPATH / 'housing_data.pickle'
 
 if not os.path.exists(HOUSING_CSV):
     raise OSError(f'{HOUSING_CSV} does not exist! Please place in the data directory.')
+
+# These are continuous variables in the dataset or created as features
+CONTINUOUS_VARIABLES = ['1stFlrSF','2ndFlrSF', '3SsnPorch', 'BedroomAbvGr', 
+                        'BsmtFinSF1', 'BsmtFinSF2', 'BsmtFullBath', 'BsmtHalfBath', 
+                        'BsmtUnfSF', 'EnclosedPorch', 'Fireplaces', 'FullBath', 
+                        'GarageArea', 'GarageCars', 'GarageYrBlt', 'GrLivArea', 
+                        'HalfBath', 'KitchenAbvGr', 'LotArea', 'LotFrontage', 
+                        'LowQualFinSF', 'MasVnrArea', 'MiscVal', 'MoSold', 'MSSubClass', 
+                        'OpenPorchSF', 'OverallCond', 'OverallQual', 'PoolArea', 
+                        'ScreenPorch', 'TotalBsmtSF', 'TotRmsAbvGrd', 'WoodDeckSF', 
+                        'YearBuilt', 'YearRemodAdd', 'YrSold','DecadeBuilt', 'DecadeRemodel',
+                        'TotalLivingArea','UnusedLotSize','HasPool','HouseAge', 'HouseAgeSq',
+                        'Toilets','Showers']
+
+CHOSEN_VARIABLES = [] # These are the variables the team has chosen to use based on EDA and experimentation
+
+VARS_TO_DUMMIFY = {'Neighborhood':'Nbhd','LotConfig':'LC','SaleCondition':'SC'}
