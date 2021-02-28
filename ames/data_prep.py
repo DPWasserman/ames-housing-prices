@@ -55,8 +55,13 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     # NOTE: Should we include Basement Bathrooms?
     housing['Toilets'] = housing['HalfBath'] + housing['FullBath'] 
     housing['Showers'] = housing['FullBath']
+
     housing['DecadeBuilt'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
     housing['DecadeRemodel'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
+    
+    maxYear = max(housing['YearBuilt'])
+    housing['HouseAge'] = maxYear - housing['YearBuilt']
+    housing['HouseAgeSq'] = housing['HouseAge'] ** 2
 
     if save_to_disk:
         # Save to a Pickle file for ease of transport
