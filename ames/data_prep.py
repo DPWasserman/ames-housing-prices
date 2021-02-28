@@ -69,22 +69,18 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
 
     return housing
 
-def dummify(housing, dict_of_dummy_var, drop_first=False, inplace=False):
+def dummify(housing, dict_of_dummy_var, drop_first=False):
     """
     Purpose: Dummify categorical variables
     Inputs: housing = DataFrame
             dict_of_dummy_var = Dict with name of categorical variable as key and prefix as value
             drop_first = Boolean to determine whether to drop the first categorical dummy
-            inplace = If true, then the function mutates the original DataFrame
-    Output: DataFrame
+    Output: DataFrame which should be joined with another dataframe to get all the features
     """
-    if inplace:
-        X = housing
-    else:
-        X = housing.copy()
+    X = pd.DataFrame()
 
-    for var, prefix in list_of_dummy_var.items():
-        dummy_df = pd.get_dummies(X[var], prefix=prefix)
+    for var, prefix in dict_of_dummy_var.items():
+        dummy_df = pd.get_dummies(housing[var], prefix=prefix)
         X = pd.concat([X, dummy_df], axis=1)
 
     return X
