@@ -45,6 +45,7 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     housing['UnusedLotSize'] = housing['LotArea'] - housing['1stFlrSF']
 
     housing['HasPool'] = (housing['PoolArea']>0)
+    housing['HasBsmt'] = np.where(housing['BsmtQual']=='None',0,1)
 
     housing['Toilets'] = housing['HalfBath'] + housing['FullBath'] + housing['BsmtFullBath'] + housing['BsmtHalfBath']
     housing['Showers'] = housing['FullBath'] + housing['BsmtFullBath']
