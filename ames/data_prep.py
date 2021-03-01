@@ -46,7 +46,6 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
 
     housing['HasPool'] = (housing['PoolArea']>0)
 
-    # NOTE: Should we include Basement Bathrooms?
     housing['Toilets'] = housing['HalfBath'] + housing['FullBath'] + housing['BsmtFullBath'] + housing['BsmtHalfBath']
     housing['Showers'] = housing['FullBath'] + housing['BsmtFullBath']
 
@@ -57,6 +56,8 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     housing['HouseAge'] = maxYear - housing['YearBuilt'] + 1
     housing['HouseAgeSq'] = housing['HouseAge'] ** 2
     housing['HouseAgeLog'] = np.log(housing['HouseAge'])
+
+    housing['UpDownRatio'] = housing['2ndFlrSF']/housing['1stFlrSF'] # Ratio of area upstairs to area downstairs
 
     if save_to_disk:
         # Save to a Pickle file for ease of transport
@@ -73,6 +74,9 @@ def dummify(housing, dict_of_dummy_var, drop_first=False):
     Output: DataFrame which should be joined with another dataframe to get all the features
     """
     X = pd.DataFrame()
+
+    if not dict_of_dummy_var:
+        return X
 
     for var, prefix in dict_of_dummy_var.items():
         dummy_df = pd.get_dummies(housing[var], prefix=prefix, drop_first=drop_first)
