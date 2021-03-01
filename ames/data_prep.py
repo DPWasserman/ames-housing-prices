@@ -53,8 +53,8 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     housing['HasPool'] = (housing['PoolArea']>0)
 
     # NOTE: Should we include Basement Bathrooms?
-    housing['Toilets'] = housing['HalfBath'] + housing['FullBath'] 
-    housing['Showers'] = housing['FullBath']
+    housing['Toilets'] = housing['HalfBath'] + housing['FullBath'] + housing['BsmtFullBath'] + housing['BsmtHalfBath']
+    housing['Showers'] = housing['FullBath'] + housing['BsmtFullBath']
 
     housing['DecadeBuilt'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
     housing['DecadeRemodel'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
