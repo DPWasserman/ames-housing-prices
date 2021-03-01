@@ -17,7 +17,7 @@ def clean(housing_location, save_to_disk=True, output_location=config.HOUSING_PI
 
     # Impute NAs with zeros (Continuous Variable)
     continuous_var = ['BsmtFinSF1','BsmtFinSF2','BsmtFullBath','BsmtHalfBath',
-                    'BsmtUnfSF','GarageArea','GarageCars','GarageYrBlt',
+                    'BsmtUnfSF','GarageArea','GarageCars',
                     'LotFrontage','MasVnrArea','TotalBsmtSF']
     for var in continuous_var:
         housing[var].fillna(0, inplace=True)
@@ -54,8 +54,9 @@ def add_features(housing, save_to_disk=True, output_location=config.HOUSING_PICK
     housing['DecadeRemodel'] = housing['YearBuilt'].apply(lambda x: (x//10 * 10))
     
     maxYear = max(housing['YearBuilt'])
-    housing['HouseAge'] = maxYear - housing['YearBuilt']
+    housing['HouseAge'] = maxYear - housing['YearBuilt'] + 1
     housing['HouseAgeSq'] = housing['HouseAge'] ** 2
+    housing['HouseAgeLog'] = np.log(housing['HouseAge'])
 
     if save_to_disk:
         # Save to a Pickle file for ease of transport
@@ -74,7 +75,7 @@ def dummify(housing, dict_of_dummy_var, drop_first=False):
     X = pd.DataFrame()
 
     for var, prefix in dict_of_dummy_var.items():
-        dummy_df = pd.get_dummies(housing[var], prefix=prefix)
+        dummy_df = pd.get_dummies(housing[var], prefix=prefix, drop_first=drop_first)
         X = pd.concat([X, dummy_df], axis=1)
 
     return X
