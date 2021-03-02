@@ -24,6 +24,7 @@ CONTINUOUS_VARIABLES = ['1stFlrSF','2ndFlrSF', '3SsnPorch', 'BedroomAbvGr',
                         'TotalLivingArea','UnusedLotSize','HasPool','HouseAge', 'HouseAgeSq',
                         'Toilets','Showers']
 
-CHOSEN_VARIABLES = [] # These are the variables the team has chosen to use based on EDA and experimentation
-
-VARS_TO_DUMMIFY = {'Neighborhood':'Nbhd','LotConfig':'LC','SaleCondition':'SC'}
+ # These are the variables the team has chosen to use based on EDA and experimentation
+CHOSEN_VARIABLES = ['LotFrontage','UnusedLotSize','HouseAge','HouseAgeSq','OverallQual','OverallCond',
+                    'GrLivArea','TotalLivingArea','Toilets','Showers','UpDownRatio','GarageArea','HasPool']
+VARS_TO_DUMMIFY = {'Neighborhood':'Nbhd','LotConfig':'LC','SaleCondition':'SC','BldgType':'BT','BsmtQual':'BQ'}
