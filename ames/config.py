@@ -28,3 +28,8 @@ CONTINUOUS_VARIABLES = ['1stFlrSF','2ndFlrSF', '3SsnPorch', 'BedroomAbvGr',
 CHOSEN_VARIABLES = ['LotFrontage','UnusedLotSize','HouseAge','HouseAgeSq','OverallQual','OverallCond',
                     'TotalLivingArea','Toilets','Showers','UpDownRatio','GarageArea','HasPool']
 VARS_TO_DUMMIFY = {'Neighborhood':'Nbhd','LotConfig':'LC','SaleCondition':'SC','BldgType':'BT','BsmtQual':'BQ'}
+
+VARS_AFTER_LASSO = ['OverallQual', 'Nbhd_Crawfor', 'BT_Twnhs', 'Nbhd_BrDale',
+       'Nbhd_MeadowV', 'OverallCond', 'Nbhd_NridgHt', 'BT_Duplex',
+       'Nbhd_IDOTRR', 'Toilets', 'SC_Partial', 'HouseAge', 'Nbhd_NoRidge',
+       'GarageArea', 'TotalLivingArea', 'UnusedLotSize'] # Using an alpha of 0.0003
