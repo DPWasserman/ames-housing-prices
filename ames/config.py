@@ -21,7 +21,7 @@ CONTINUOUS_VARIABLES = ['1stFlrSF','2ndFlrSF', '3SsnPorch', 'BedroomAbvGr',
                         'OpenPorchSF', 'OverallCond', 'OverallQual', 'PoolArea', 
                         'ScreenPorch', 'TotalBsmtSF', 'TotRmsAbvGrd', 'WoodDeckSF', 
                         'YearBuilt', 'YearRemodAdd', 'YrSold','DecadeBuilt', 'DecadeRemodel',
-                        'TotalLivingArea','UnusedLotSize','HasPool','HouseAge', 'HouseAgeSq',
+                        'TotalLivingArea','UnusedLotSize','HasBsmt', 'HasPool','HouseAge', 'HouseAgeSq',
                         'Toilets','Showers']
 
  # These are the variables the team has chosen to use based on EDA and experimentation
