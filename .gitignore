@@ -3,3 +3,4 @@ models/.ipynb_checkpoints
 /data
 *.url
 *.pyc
+.DS_Store
