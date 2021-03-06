@@ -25,8 +25,6 @@ def clean(housing_location, save_to_disk=True, output_location=config.HOUSING_PI
     # Impute NAs with None (Qualitative Variable)
     housing['BsmtQual'].fillna('None', inplace=True)
 
-    # TODO: Additional cleaning
-
     if save_to_disk:
         # Save to a Pickle file for ease of transport
         housing.to_pickle(output_location)
