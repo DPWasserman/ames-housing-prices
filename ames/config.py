@@ -29,7 +29,15 @@ CHOSEN_VARIABLES = ['YrSold', 'LotFrontage','UnusedLotSize','HouseAgeSq','Overal
                     'TotalLivingArea','Toilets','Showers','UpDownRatio','GarageArea','HasPool','HasBsmt']
 VARS_TO_DUMMIFY = {'Neighborhood':'Nbhd','LotConfig':'LC','SaleCondition':'SC','BldgType':'BT','BsmtQual':'BQ'}
 
-VARS_AFTER_LASSO = ['OverallQual', 'Nbhd_Crawfor', 'BT_Twnhs', 'Nbhd_BrDale',
-       'Nbhd_MeadowV', 'OverallCond', 'Nbhd_NridgHt', 'BT_Duplex',
-       'Nbhd_IDOTRR', 'Toilets', 'SC_Partial', 'HouseAge', 'Nbhd_NoRidge',
-       'GarageArea', 'TotalLivingArea', 'UnusedLotSize'] # Using an alpha of 0.0003
+LASSO_VARS_FROM_CHOSEN = ['BQ_Ex','BQ_Gd', 'BT_1Fam', 'GarageArea', 'LotFrontage', 'Nbhd_Blmngtn',
+                    'Nbhd_ClearCr', 'Nbhd_Crawfor', 'Nbhd_Gilbert', 'Nbhd_GrnHill', 'Nbhd_NoRidge',
+                    'Nbhd_NridgHt', 'Nbhd_Somerst', 'Nbhd_StoneBr', 'OverallCond', 'OverallQual',
+                    'SC_Partial', 'Showers', 'Toilets', 'TotalLivingArea', 'UnusedLotSize']
+                    # Using an alpha of 4.028090452261307e-05 (Found via Alpha CV starting from Chosen Variables)
+
+LASSO_VARS_FROM_ALL =['1stFlrSF', 'BQ_Ex', 'BT_1Fam', 'Fireplaces', 'GarageArea',
+                      'GarageCars', 'GrLivArea', 'LotArea', 'Nbhd_ClearCr', 'Nbhd_Crawfor',
+                      'Nbhd_GrnHill', 'Nbhd_NridgHt', 'Nbhd_Somerst', 'Nbhd_StoneBr',
+                      'OverallCond', 'OverallQual', 'ScreenPorch', 'Showers', 'Toilets', 
+                      'TotalBsmtSF', 'TotalLivingArea', 'WoodDeckSF', 'YearBuilt', 'YearRemodAdd']
+                      # Using an alpha of 4.6308040201005025e-05 (Found via Alpha CV starting from all continous variables)
