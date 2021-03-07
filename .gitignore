@@ -1,7 +1,10 @@
 EDA/.ipynb_checkpoints
+kaggle/.ipynb_checkpoints
+kaggle/catboost_info
 models/.ipynb_checkpoints
 models/catboost_info
 /data
-*.url
+*.csv
 *.pyc
+*.url
 .DS_Store
