@@ -10,7 +10,7 @@ def get_feature_importance(model, X: pd.DataFrame) -> pd.Series:
     feats = feats[feats>0].sort_values(ascending=False)
     return feats
 
-def graph_importance(feats: pd.Series, model_name='': str):
+def graph_importance(feats: pd.Series, model_name: str =''):
     """
     Given a pandas Series of feature importances and an optional model name,
     this will return a Plotly bar graph showing the importances.
