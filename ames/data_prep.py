@@ -10,7 +10,8 @@ def clean(housing_location, save_to_disk=True, output_location=config.HOUSING_PI
     housing = pd.read_csv(housing_location)
 
     # Drop index column
-    housing.drop('Unnamed: 0',axis=1, inplace=True)
+    if 'Unnamed: 0' in housing.columns:
+        housing.drop('Unnamed: 0',axis=1, inplace=True)
 
     # Drop duplicate record(s)
     housing = housing.loc[~housing.duplicated(),:]
